@@ -13,14 +13,15 @@ final class UpcomingMoviesViewModel: ObservableObject {
     @Published private var movies: [MovieEntity] = []
     @Published var homeState: HomeState = .loading
     
-    let getUpcomingMoviesUseCase: GetUpcomingMoviesUseCase
+    let upcomingMoviesService: UpcomingMoviesService
     
     
-    init(getUpcomingMoviesUseCase: GetUpcomingMoviesUseCase) {
-        self.getUpcomingMoviesUseCase = getUpcomingMoviesUseCase
+    init(upcomingMoviesService: UpcomingMoviesService) {
+        self.upcomingMoviesService = upcomingMoviesService
     }
     
     func fetchMovies() {
+        self.upcomingMoviesService.getUpcomingMovies()
         movies = DemoData.result.movies
         homeState = .Done(movies)
     }

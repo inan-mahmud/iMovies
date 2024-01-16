@@ -10,9 +10,7 @@ import SwiftUI
 
 struct AppCoordinator: View {
     
-    let dependencies = AppDependencies()
-    
     var body: some View {
-        DashboardCoordinator(httpClient: dependencies.createHTTPClient())
+        DashboardCoordinator()
     }
 }

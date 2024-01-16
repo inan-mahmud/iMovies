@@ -10,8 +10,17 @@ import Foundation
 
 final class AppDependencies {
     
-    public func createHTTPClient() -> HTTPClient {
-        let httpClient = URLSessionHTTPClient(session: URLSession(configuration: .default))
+    public lazy var httpClient: HTTPClient = {
+        let httpClient = URLSessionHTTPClient(session: URLSession.shared)
         return httpClient
-    }
+    }()
+    
+    
+    public lazy var upcomingMoviesRepository: UpcomingMoviesRepository  = {
+        RemoteUpcomingMoviesRepository(httpClient: httpClient)
+    }()
+    
+    public lazy var upcomingMoviesService: UpcomingMoviesService =  {
+       RemoteUpcomingMoviesService(upcomingMoviesRepository: upcomingMoviesRepository)
+    }()
 }

@@ -16,7 +16,9 @@ final class RemoteUpcomingMoviesService: UpcomingMoviesService {
     }
     
     func getUpcomingMovies() {
-        <#code#>
+        upcomingMoviesRepository.fetchUpcomingMovies { result in
+            print("")
+        }
     }
 }
 

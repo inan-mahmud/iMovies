@@ -6,17 +6,10 @@
 //
 
 import Foundation
-import Combine
-
-
-public protocol HTTPClientTask {
-    func cancel()
-}
 
 public protocol HTTPClient {
     typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
     
-    @discardableResult
-    func makeRequest(url: URL, completion: @escaping (Result) -> Void) -> HTTPClientTask
+    func makeRequest(request: URLRequest, completion: @escaping (Result) -> Void)
 }
 

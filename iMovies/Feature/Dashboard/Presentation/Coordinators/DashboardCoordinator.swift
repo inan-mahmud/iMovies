@@ -8,20 +8,32 @@
 import SwiftUI
 
 struct DashboardCoordinator: View {
-    
-    let httpClient: HTTPClient
-    
-    init(httpClient: HTTPClient) {
-        self.httpClient = httpClient
-    }
+ 
     
     var body: some View {
-        DashboardView()
+        TabView {
+            HomeCoordinator(httpClient: URLSessionHTTPClient(session: URLSession.shared))
+                .tabItem {
+                    Label("Discover",systemImage: "globe")
+                }
+            
+            SearchCoordinator()
+                .tabItem {
+                    Label("Search",systemImage: "magnifyingglass")
+                }
+            
+            AccountCoordinator()
+                .tabItem {
+                    Label("Account",systemImage: "person.crop.circle")
+                }
+        }
     }
 }
 
+
+
 struct DashboardCoordinator_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardCoordinator(httpClient: URLSessionHTTPClient(session: URLSession(configuration: .default)))
+        DashboardCoordinator()
     }
 }
