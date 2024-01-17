@@ -9,6 +9,6 @@ import Foundation
 
 enum HomeState {
     case loading
-    case Done([MovieEntity])
+    case Done
     case Error(String)
 }

@@ -20,16 +20,9 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack {
-               switch upcomingMoviesViewModel.homeState {
-               case .loading:
-                   ProgressView()
-               case .Error(let error):
-                   Text(error)
-               case .Done(let movies):
-                   List(movies) { movie in
-                       cardView(movie)
-                   }
-               }
+                List(upcomingMoviesViewModel.movies) { movie in
+                    cardView(movie)
+                }
             }.onAppear {
                 upcomingMoviesViewModel.fetchMovies()
             }

@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 
 final class UpcomingMoviesViewModel: ObservableObject {
     
-    @Published private var movies: [MovieEntity] = []
-    @Published var homeState: HomeState = .loading
+    @Published public var movies: [MovieEntity] = []
+    private var cancellables = Set<AnyCancellable>()
     
     let upcomingMoviesService: UpcomingMoviesService
     
@@ -21,8 +22,19 @@ final class UpcomingMoviesViewModel: ObservableObject {
     }
     
     func fetchMovies() {
-        self.upcomingMoviesService.getUpcomingMovies()
-        movies = DemoData.result.movies
-        homeState = .Done(movies)
+        upcomingMoviesService.getUpcomingMovies()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    print("finished api call")
+                }
+            } receiveValue: { [weak self] paginatedEntity in
+                self?.movies = paginatedEntity.movies
+            }
+            .store(in: &cancellables)
+
     }
 }
