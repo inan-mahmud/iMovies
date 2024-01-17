@@ -11,7 +11,7 @@ struct MovieDTO: Codable {
     let page: Int
     let results: [Result]
     let totalPages, totalResults: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case page, results
         case totalPages = "total_pages"
@@ -24,14 +24,14 @@ struct Result: Codable {
     let backdropPath: String
     let genreIDS: [Int]
     let id: Int
-    let originalLanguage: OriginalLanguage
+    let originalLanguage: String
     let originalTitle, overview: String
     let popularity: Double
     let posterPath, releaseDate, title: String
     let video: Bool
     let voteAverage: Double
     let voteCount: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
@@ -48,8 +48,12 @@ struct Result: Codable {
     }
 }
 
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case es = "es"
-    case tl = "tl"
+
+extension MovieDTO {
+    
+    public func mapToEntity() -> PaginatedEntity {
+        return PaginatedEntity(page: self.page, totalPages: self.totalPages, movies: self.results.map({ result in
+            return MovieEntity(backDropPath: result.backdropPath, posterPath: result.posterPath, releaseDate: result.releaseDate, title: result.title, overview: result.overview, voteAverage: result.voteAverage)
+        }))
+    }
 }
