@@ -1,10 +1,3 @@
-//
-//  MovieError.swift
-//  iMovies
-//
-//  Created by cefalo on 16/1/24.
-//
-
 import Foundation
 
 enum MovieError: LocalizedError {
@@ -18,39 +11,38 @@ enum MovieError: LocalizedError {
     
 }
 
-
 extension MovieError {
     var errorDescription: String? {
         switch self {
         case .invalidData:
-            return "Oops! Something went wrong!"
+            return NSLocalizedString("Oops! Something went wrong!", comment: "")
         case .unableToLoadData:
-            return "Unable to load data"
+            return NSLocalizedString("Unable to load data", comment: "")
         case .networkError:
-            return "A network error occured"
+            return NSLocalizedString("A network error occured", comment: "")
         case .unauthorized:
-            return "Unauthorized"
+            return NSLocalizedString("Unauthorized", comment: "")
         case .custom(let message):
-            return message
+            return NSLocalizedString(message, comment: "")
         case .unknown:
-            return "Oops! Something went wrong!"
+            return NSLocalizedString("Oops! Something went wrong!", comment: "")
         }
     }
     
     var recoverySuggestion: String? {
         switch self {
         case .invalidData:
-            return "Please try again"
+            return NSLocalizedString("Please try again", comment: "")
         case .unableToLoadData:
-            return "Please check your internet connection"
+            return NSLocalizedString("Please check your internet connection", comment: "")
         case .networkError:
-            return "Please check your internet connection"
+            return NSLocalizedString("Please check your internet connection", comment: "")
         case .unauthorized:
-            return "Please provide correct email and password"
+            return NSLocalizedString("Please provide correct email and password", comment: "")
         case .custom(let message):
-            return message
+            return NSLocalizedString(message, comment: "")
         case .unknown:
-            return "Please try again later"
+            return NSLocalizedString("Please try again later", comment: "")
         }
     }
 }

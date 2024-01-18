@@ -52,7 +52,7 @@ struct Result: Codable {
 extension MovieDTO {
     
     public func mapToEntity() -> PaginatedEntity {
-        return PaginatedEntity(page: self.page, totalPages: self.totalPages, movies: self.results.map({ result in
+        PaginatedEntity(page: self.page, totalPages: self.totalPages, movies: self.results.map({ result in
             return MovieEntity(backDropPath: result.backdropPath, posterPath: result.posterPath, releaseDate: result.releaseDate, title: result.title, overview: result.overview, voteAverage: result.voteAverage)
         }))
     }

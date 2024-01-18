@@ -27,7 +27,7 @@ final class UpcomingMoviesViewModel: ObservableObject {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    print(error)
+                    print(error.errorDescription!)
                 case .finished:
                     print("finished api call")
                 }

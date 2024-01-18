@@ -22,19 +22,15 @@ final class RemoteUpcomingMoviesRepository: UpcomingMoviesRepository {
         
         httpClient.makeRequest(request: signedRequest) { result in
             switch result {
-            case .success(let (data, response)):
-                let (movie,apiError) = MovieDTOMapper.map(data: data, response: response)
-                
-                if let apiError {
-                    completion(.failure(apiError))
-                } else if let movie = movie {
+            case .success(let data):
+                do {
+                    let movie: MovieDTO = try data.decode()
                     completion(.success(movie))
-                } else {
-                    let unknownError = APIError.unknownError(error: NSError(domain: "", code: 0))
-                    completion(.failure(unknownError))
+                } catch {
+                    completion(.failure(APIError.jsonParsingFailure))
                 }
-            case .failure(_):
-                completion(.failure(APIError.invalidResponse))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

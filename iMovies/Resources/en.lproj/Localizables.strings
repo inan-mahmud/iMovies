@@ -1,0 +1,18 @@
+/* 
+  Localizables.strings
+  iMovies
+
+  Created by cefalo on 18/1/24.
+  
+*/
+
+"EDInvalidData" = "Oops! Something went wrong!";
+"EDUnableToLoadData" = "Unable to load data";
+"EDNetworkError" = "A network error occured";
+"EDUnauthorized" = "Email or Password don't match";
+"EDUnknown" = "Oops! An unexpected error occurred.";
+"RSInvalidData" = "Please try again";
+"RSUnableToLoadData" = "Please check your internet connection";
+"RSNetworkError" = "Please check your internet connection";
+"RSUnauthorized" = "Please provide correct email and password";
+"RSUnknown" = "Please try again later";

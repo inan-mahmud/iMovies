@@ -10,31 +10,44 @@ import Combine
 
 
 public final class URLSessionHTTPClient: HTTPClient {
-    
+
     private let session: URLSession
     
     public init(session: URLSession) {
         self.session = session
     }
     
-    private struct UnexpectedValuesRepresentation: Error {}
-    
-    
-    public func makeRequest(request: URLRequest, completion: @escaping (HTTPClient.Result) -> Void) {
+    func makeRequest(request: URLRequest, completion: @escaping CompletionHandler) {
         
         let task = session.dataTask(with: request) { data, response, error in
-            completion(Result {
-                if let error = error {
-                    throw error
-                } else if let data = data, let response = response as? HTTPURLResponse {
-                    return (data, response)
+            
+            if let error = error {
+                var apiError: APIError
+                if let _ = response as? HTTPURLResponse {
+                    apiError = .invalidResponse
                 } else {
-                    throw UnexpectedValuesRepresentation()
+                    apiError = self.resolve(error: error)
                 }
-            })
+                completion(.failure(apiError))
+            } else {
+                guard let data = data else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                completion(.success(data))
+            }
         }
         task.resume()
-        
     }
-    
+}
+
+extension URLSessionHTTPClient {
+    func resolve(error: Error) -> APIError {
+          let code = URLError.Code(rawValue: (error as NSError).code)
+          switch code {
+            case .notConnectedToInternet: return .networkError
+            case .cancelled: return .cancelled
+            default: return .custom(error: error)
+          }
+      }
 }

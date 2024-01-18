@@ -8,6 +8,8 @@
 import Foundation
 
 enum APIError: Error {
+    case networkError
+    case cancelled
     case invalidResponse
     case jsonParsingFailure
     case requestFailed(description: String)
@@ -17,13 +19,14 @@ enum APIError: Error {
     case custom(error: Error)
 }
 
-
- 
-
 extension APIError {
     
      func mapToMovieError() -> MovieError {
         switch self {
+        case .cancelled:
+            return MovieError.unableToLoadData
+        case .networkError:
+            return MovieError.networkError
         case .invalidResponse:
             return MovieError.invalidData
         case .jsonParsingFailure:
@@ -41,20 +44,3 @@ extension APIError {
         }
     }
 }
-
-/**
- extension APIError {
-     var errorDescription: String?{
-         switch self {
-             case .invalidResponse: return "Invaid Response"
-             case .jsonParsingFailure: return "Failed to parse JSON"
-             case let .requestFailed(description): return "Request Failed: \(description)"
-             case let .invalidStatusCode(statusCode): return "Invalid status code: \(statusCode)"
-             case .unauthorized: return "Token expired or not provided"
-             case let .unknownError(error): return "An unknown error occured \(error.localizedDescription)"
-         case .custom(let error):
-             return "Something went wrong \(error.localizedDescription)"
-         }
-     }
- }
- */

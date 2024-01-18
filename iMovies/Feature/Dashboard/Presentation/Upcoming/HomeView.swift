@@ -61,6 +61,6 @@ struct MovieCard: View {
 
 //struct HomeView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        HomeView(upcomingMoviesViewModel: UpcomingMoviesViewModel())
+//        HomeView(upcomingMoviesViewModel: )
 //    }
 //}
