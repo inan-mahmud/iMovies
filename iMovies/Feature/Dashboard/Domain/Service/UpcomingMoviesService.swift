@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 protocol UpcomingMoviesService {
-    func getUpcomingMovies()
+    func getUpcomingMovies() -> AnyPublisher<PaginatedEntity,MovieError>
 }
 
 

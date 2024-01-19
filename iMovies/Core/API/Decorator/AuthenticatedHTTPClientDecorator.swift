@@ -17,7 +17,7 @@ class AuthenticatedHTTPClientDecorator: HTTPClient {
         self.tokenProvider = tokenProvider
     }
     
-    func makeRequest(request: URLRequest, completion: @escaping (HTTPClient.Result) -> Void) {
+    func makeRequest(request: URLRequest, completion: @escaping CompletionHandler) {
         let accessToken = tokenProvider.getAccessToken()
         var signedRequest = request
         signedRequest.addValue(accessToken, forHTTPHeaderField: "Authorization")

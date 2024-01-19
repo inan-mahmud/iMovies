@@ -8,6 +8,6 @@
 import Foundation
 
 protocol UpcomingMoviesRepository {
-    func fetchUpcomingMovies(completion: @escaping (Swift.Result<MovieDTO, Error>) -> Void)
+    func fetchUpcomingMovies(completion: @escaping (Swift.Result<MovieDTO, APIError>) -> Void)
 }
 

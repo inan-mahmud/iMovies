@@ -7,9 +7,9 @@
 
 import Foundation
 
-public protocol HTTPClient {
-    typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
+protocol HTTPClient {
+    typealias CompletionHandler = (Swift.Result<Data,APIError>) -> Void
     
-    func makeRequest(request: URLRequest, completion: @escaping (Result) -> Void)
+    func makeRequest(request: URLRequest, completion: @escaping CompletionHandler)
 }
 

@@ -15,21 +15,19 @@ final class RemoteUpcomingMoviesRepository: UpcomingMoviesRepository {
         self.httpClient = httpClient
     }
     
-    func fetchUpcomingMovies(completion: @escaping (Swift.Result<MovieDTO, Error>) -> Void) {
+    func fetchUpcomingMovies(completion: @escaping (Swift.Result<MovieDTO, APIError>) -> Void) {
         
-        let upcomingMoviesEndpoint = Endpoint<EndpointTypes.Private,MovieDTO>.upcoming
-        let request = upcomingMoviesEndpoint.makeRequest(with: AccessToken.accessToken)
+        let signedRequest = Endpoint.upcoming.makeRequest(with: AccessToken.accessToken)
         
-        httpClient.makeRequest(request: request) { result in
+        
+        httpClient.makeRequest(request: signedRequest) { result in
             switch result {
-            case .success(let (data,_)):
+            case .success(let data):
                 do {
-                    let decodedData = try JSONDecoder().decode(MovieDTO.self, from: data)
-                  
-                    completion(.success(decodedData))
+                    let movie: MovieDTO = try data.decode()
+                    completion(.success(movie))
                 } catch {
-                    print(error)
-                    completion(.failure(error))
+                    completion(.failure(APIError.jsonParsingFailure))
                 }
             case .failure(let error):
                 completion(.failure(error))

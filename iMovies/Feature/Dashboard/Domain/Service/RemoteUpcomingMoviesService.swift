@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class RemoteUpcomingMoviesService: UpcomingMoviesService {
     
@@ -15,10 +16,20 @@ final class RemoteUpcomingMoviesService: UpcomingMoviesService {
         self.upcomingMoviesRepository = upcomingMoviesRepository
     }
     
-    func getUpcomingMovies() {
-        upcomingMoviesRepository.fetchUpcomingMovies { result in
-            print("")
-        }
+    func getUpcomingMovies() -> AnyPublisher<PaginatedEntity,MovieError> {
+      return Deferred {
+            Future { promise in
+                self.upcomingMoviesRepository.fetchUpcomingMovies { result in
+                    switch result {
+                        case .success(let movieDTO):
+                        promise(.success(movieDTO.mapToEntity()))
+                        case .failure(let error):
+                        promise(.failure(error.mapToMovieError()))
+                    }
+                }
+                
+            }
+        }.eraseToAnyPublisher()
     }
 }
 
