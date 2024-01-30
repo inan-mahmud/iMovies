@@ -14,10 +14,10 @@ struct HomeCoordinator: View {
     init(httpClient: HTTPClient) {
         self.httpClient = httpClient
     }
+    
     var body: some View {
         HomeFactory.create(httpClient: httpClient)
     }
-    
     
 }
 

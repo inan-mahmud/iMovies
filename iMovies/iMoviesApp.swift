@@ -12,7 +12,7 @@ struct iMoviesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AppCoordinator()
+            DashboardCoordinator()
         }
     }
 }

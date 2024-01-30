@@ -19,7 +19,6 @@ final class RemoteUpcomingMoviesRepository: UpcomingMoviesRepository {
         
         let signedRequest = Endpoint.upcoming.makeRequest(with: AccessToken.accessToken)
         
-        
         httpClient.makeRequest(request: signedRequest) { result in
             switch result {
             case .success(let data):
