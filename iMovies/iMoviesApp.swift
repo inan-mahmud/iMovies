@@ -1,18 +1,18 @@
+////
+////  iMoviesApp.swift
+////  iMovies
+////
+////  Created by cefalo on 24/12/23.
+////
 //
-//  iMoviesApp.swift
-//  iMovies
+//import SwiftUI
 //
-//  Created by cefalo on 24/12/23.
+//@main
+//struct iMoviesApp: App {
 //
-
-import SwiftUI
-
-@main
-struct iMoviesApp: App {
-    
-    var body: some Scene {
-        WindowGroup {
-            DashboardCoordinator()
-        }
-    }
-}
+//    var body: some Scene {
+//        WindowGroup {
+//            DashboardCoordinator()
+//        }
+//    }
+//}
