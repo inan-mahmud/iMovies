@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct DashboardCoordinator: View {
- 
+struct DashboardCoordinator: View{
+    
+    weak var coordinator: RootCoordinator?
+    
     
     var body: some View {
         TabView {
@@ -28,6 +30,7 @@ struct DashboardCoordinator: View {
                 }
         }
     }
+    
 }
 
 

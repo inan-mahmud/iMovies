@@ -8,7 +8,7 @@
 import Foundation
 
 struct Endpoint<Kind: EndpointType, Response: Decodable> {
-    var path: String
+    private var path: String
     var method: HTTPMethod = .get([])
 }
 
@@ -46,11 +46,7 @@ extension Endpoint where Kind == EndpointTypes.Private, Response == MovieDTO {
     static var upcoming: Self {
         Endpoint(path: "movie/upcoming")
     }
-    static func details(withID id: Int) -> Self {
-        Endpoint(path: "movie/\(id)")
-    }
 }
-
 
 enum AccessToken: String {
     case accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDI1OTYwNTU3ZTNhNzgyMjg5NDVkYjg5NzJiZTc3MiIsInN1YiI6IjY1ODVjZDc2ZmNhZGI0MjVlMTMzZmU3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FLHnmsaHp_V2VHmZbWBJEC6Om2pR1wRWCjmFa7KU8SQ"
@@ -80,3 +76,5 @@ enum EndpointTypes {
         }
     }
 }
+
+
