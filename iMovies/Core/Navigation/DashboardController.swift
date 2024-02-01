@@ -33,14 +33,32 @@ class DashboardController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        upcomingPageCoordinator.start(animated: false)
-        searchPageCooridinator.start(animated: false)
-        accountPageCoordinator.start(animated: false)
+        startCoordinators()
+        
+        setUpTabs()
         
         viewControllers = [
             upcomingPageCoordinator.navigationController,
             searchPageCooridinator.navigationController,
             accountPageCoordinator.navigationController
         ]
+    }
+   
+}
+
+extension DashboardController {
+    
+    private func startCoordinators() {
+        upcomingPageCoordinator.start(animated: false)
+        searchPageCooridinator.start(animated: false)
+        accountPageCoordinator.start(animated: false)
+    }
+    
+    private func setUpTabs() {
+        upcomingPageCoordinator.navigationController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"),selectedImage: UIImage(systemName: "house.fill"))
+
+        searchPageCooridinator.navigationController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+
+        accountPageCoordinator.navigationController.tabBarItem = UITabBarItem(title: "Account", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle"))
     }
 }
