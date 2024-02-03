@@ -12,7 +12,7 @@ struct AccountView: View {
         List {
             Section {
                 HStack {
-                    Text("JD")
+                    Text(User.MOCK_USER.initials)
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -21,12 +21,12 @@ struct AccountView: View {
                     .clipShape(Circle())
                     
                     VStack (alignment: .leading, spacing: 4){
-                        Text("John Doe")
+                        Text(User.MOCK_USER.fullName)
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .padding(.top,4)
                         
-                        Text("test@gmail.com")
+                        Text(User.MOCK_USER.email)
                             .font(.footnote)
                             .tint(.gray)
                     }
