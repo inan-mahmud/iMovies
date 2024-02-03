@@ -9,7 +9,44 @@ import SwiftUI
 
 struct AccountView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            Section {
+                HStack {
+                    Text("JD")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .frame(width: 72,height: 72)
+                        .background(Color(.systemGray3))
+                    .clipShape(Circle())
+                    
+                    VStack (alignment: .leading, spacing: 4){
+                        Text("John Doe")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.top,4)
+                        
+                        Text("test@gmail.com")
+                            .font(.footnote)
+                            .tint(.gray)
+                    }
+                }
+            }
+            
+            Section("Account") {
+                Button {
+                    print("Sign out")
+                } label: {
+                    SettingsRowView(imageName: "arrow.left.circle.fill", title: "Sign Out", tintColor: .red)
+                }
+                
+                Button {
+                    print("Delete Account")
+                } label: {
+                    SettingsRowView(imageName: "xmark.circle.fill", title: "Delete Account", tintColor: .red)
+                }
+            }
+        }
     }
 }
 

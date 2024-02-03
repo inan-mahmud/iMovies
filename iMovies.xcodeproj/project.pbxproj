@@ -33,6 +33,7 @@
 		3A7413EC2B53F70A00441784 /* AuthenticatedHTTPClientDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7413EB2B53F70A00441784 /* AuthenticatedHTTPClientDecorator.swift */; };
 		3A7413EE2B53F73E00441784 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7413ED2B53F73E00441784 /* TokenProvider.swift */; };
 		3A8BA2F62B6E031400F5097E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BA2F52B6E031400F5097E /* InputView.swift */; };
+		3A8BA2F82B6E1A2C00F5097E /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BA2F72B6E1A2C00F5097E /* SettingsRowView.swift */; };
 		3A9744F42B6979CA00443C64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9744F32B6979CA00443C64 /* AppDelegate.swift */; };
 		3A9744F62B697A0800443C64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9744F52B697A0800443C64 /* SceneDelegate.swift */; };
 		3AA69EFB2B4EA3CF0055C90F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA69EFA2B4EA3CF0055C90F /* HomeView.swift */; };
@@ -82,6 +83,7 @@
 		3A7413EB2B53F70A00441784 /* AuthenticatedHTTPClientDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedHTTPClientDecorator.swift; sourceTree = "<group>"; };
 		3A7413ED2B53F73E00441784 /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		3A8BA2F52B6E031400F5097E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		3A8BA2F72B6E1A2C00F5097E /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		3A9744F32B6979CA00443C64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A9744F52B697A0800443C64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3AA69EFA2B4EA3CF0055C90F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				3AA69EFE2B4EA41C0055C90F /* AccountView.swift */,
+				3A8BA2F72B6E1A2C00F5097E /* SettingsRowView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				3A13397B2B569E7C0018E12D /* MovieError.swift in Sources */,
 				3AC2B9FD2B51460100D41050 /* CombineHTTPClient.swift in Sources */,
 				3A7413E52B52F9F800441784 /* LoginState.swift in Sources */,
+				3A8BA2F82B6E1A2C00F5097E /* SettingsRowView.swift in Sources */,
 				3A46285B2B6AABF200726B65 /* RootCoordinator.swift in Sources */,
 				3AC2B9EC2B4FEE5700D41050 /* HomeState.swift in Sources */,
 				3AA9E7B22B68B52800CDCD1F /* DashboardController.swift in Sources */,
