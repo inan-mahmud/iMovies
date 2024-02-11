@@ -12,6 +12,8 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     
+    
+    
     var body: some View {
         ZStack {
             Color(.systemBackground)
@@ -28,7 +30,7 @@ struct LoginView: View {
                 .padding(.top,12)
                 
                 Button {
-                    print("Log user in ...")
+                    
                 } label: {
                     HStack {
                         Text("SIGN IN")
@@ -51,3 +53,4 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
     }
 }
+
