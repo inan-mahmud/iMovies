@@ -10,8 +10,6 @@ import FirebaseAuth
 
 class FirebaseAuthRepository: AuthRepository {
     
-    typealias ResultType = FirebaseAuth.User
-    
     let auth: Auth
     
     init(auth: Auth) {
@@ -20,7 +18,8 @@ class FirebaseAuthRepository: AuthRepository {
     
     func signInWithEmailAndPassword(withEmail email: String, password: String, completion: @escaping (Swift.Result<FirebaseAuth.User, APIAuthError>) -> Void) {
         auth.signIn(withEmail: email, password: password) { authResult, error in
-            
+            print(error)
+            print(authResult)
             if let error {
                 completion(.failure(.customError(message: error.localizedDescription)))
                 return

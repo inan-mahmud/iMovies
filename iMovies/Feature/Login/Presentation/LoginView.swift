@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     
     @State private var email = ""
     @State private var password = ""
     
+    @ObservedObject private var authViewModel:AuthViewModel
+    
+    init(authViewModel: AuthViewModel) {
+        self.authViewModel = authViewModel
+    }
     
     
     var body: some View {
@@ -30,7 +36,7 @@ struct LoginView: View {
                 .padding(.top,12)
                 
                 Button {
-                    
+                    authViewModel.signIn(email: email, password: password)
                 } label: {
                     HStack {
                         Text("SIGN IN")
@@ -42,15 +48,16 @@ struct LoginView: View {
                 .background(Color(.systemBlue))
                 .cornerRadius(10)
                 .padding(.top,24)
-                
             }
+        }.alert(isPresented: $authViewModel.hasError) {
+            Alert(title: Text(authViewModel.authError?.errorDescription ?? "Something went wrong!"),message: Text(authViewModel.authError?.recoverySuggestion ?? "Please try again later"),dismissButton: .default(Text("Okay")))
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(authViewModel: AuthViewModel(authService: FirebaseAuthService(authRepository: FirebaseAuthRepository(auth: Auth.auth()))))
     }
 }
 

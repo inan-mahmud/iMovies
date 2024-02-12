@@ -15,8 +15,10 @@ final class AuthViewModel: ObservableObject {
     let authService: AuthService
     
     @Published var user: User?
-    @Published var errorMessage: String?
-    @Published var recoveryMessage: String?
+    
+    @Published var hasError = false
+    @Published var authError: AuthError?
+
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -31,13 +33,14 @@ final class AuthViewModel: ObservableObject {
             .sink { [weak self] completion in
                 switch completion {
                     case .failure(let error):
-                        self?.errorMessage = error.errorDescription
-                        self?.recoveryMessage = error.recoverySuggestion
+                    self?.hasError = true
+                    self?.authError = error
                     case .finished:
-                        print("finished api call")
+                        break;
                     }
                 } receiveValue: {[weak self] user in
                     self?.user = user
+                    self?.hasError = false
             }.store(in: &cancellables)
         
     }

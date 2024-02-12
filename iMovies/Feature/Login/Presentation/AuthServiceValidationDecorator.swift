@@ -32,3 +32,8 @@ class AuthServiceValidationDecorator: AuthService {
 
 
 
+extension AuthService {
+    func addValidation() -> AuthService {
+        AuthServiceValidationDecorator(authService: self)
+    }
+}

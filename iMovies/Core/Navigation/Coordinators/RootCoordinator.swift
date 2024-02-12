@@ -19,7 +19,7 @@ final class RootCoordinator: NSObject, ParentCoordinator {
     
     // MARK: inject ViewModel with coordinator and attach it to view controller
     func start(animated: Bool) {
-        navigateToDashboard()
+        navigateToLogin()
     }
 }
 
