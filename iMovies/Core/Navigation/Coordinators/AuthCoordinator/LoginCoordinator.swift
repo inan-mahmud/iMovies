@@ -5,7 +5,6 @@
 //  Created by cefalo on 31/1/24.
 //
 
-import Foundation
 import UIKit
 import FirebaseAuth
 import SwiftUI
@@ -29,7 +28,9 @@ final class LoginCoordinator: ChildCoordinator {
         let authService: AuthService = FirebaseAuthService(authRepository: repository)
         let decorator = authService.addValidation()
         let authViewModel: AuthViewModel = AuthViewModel(authService: decorator)
-        let loginController = UIHostingController(rootView: LoginView(authViewModel: authViewModel))
+        let loginController = UIHostingController(rootView: LoginView(authViewModel: authViewModel,onLoggedIn: { [weak self] user in
+            self?.onLoginSuccess()
+        }))
         navigationController.pushViewController(loginController, animated: false)
     }
     

@@ -14,9 +14,14 @@ struct LoginView: View {
     @State private var password = ""
     
     @ObservedObject private var authViewModel:AuthViewModel
+    private let onLoggedIn: (User) -> Void
     
-    init(authViewModel: AuthViewModel) {
+    @State private var loggedInUser: User?
+    
+    
+    init(authViewModel: AuthViewModel, onLoggedIn: @escaping (User) -> Void) {
         self.authViewModel = authViewModel
+        self.onLoggedIn = onLoggedIn
     }
     
     
@@ -51,13 +56,20 @@ struct LoginView: View {
             }
         }.alert(isPresented: $authViewModel.hasError) {
             Alert(title: Text(authViewModel.authError?.errorDescription ?? "Something went wrong!"),message: Text(authViewModel.authError?.recoverySuggestion ?? "Please try again later"),dismissButton: .default(Text("Okay")))
+        }.onReceive(authViewModel.$user) { user in
+            if let user = user {
+                loggedInUser = user
+                onLoggedIn(user)
+            }
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authViewModel: AuthViewModel(authService: FirebaseAuthService(authRepository: FirebaseAuthRepository(auth: Auth.auth()))))
+        LoginView(authViewModel: AuthViewModel(authService: FirebaseAuthService(authRepository: FirebaseAuthRepository(auth: Auth.auth())))) { user in
+            print("Logged In")
+        }
     }
 }
 

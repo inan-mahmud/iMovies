@@ -17,7 +17,7 @@ final class RemoteUpcomingMoviesRepository: UpcomingMoviesRepository {
     
     func fetchUpcomingMovies(completion: @escaping (Swift.Result<MovieDTO, APIError>) -> Void) {
         
-        let signedRequest = Endpoint.upcoming.makeRequest(with: AccessToken.accessToken)
+        let signedRequest = Endpoint.upcoming.makeRequest(with: Constants.accessToken)
         
         httpClient.makeRequest(request: signedRequest) { result in
             switch result {

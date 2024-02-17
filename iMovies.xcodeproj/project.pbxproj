@@ -57,6 +57,7 @@
 		3AA90D472B6FF1CF00888856 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA90D462B6FF1CF00888856 /* String+Ext.swift */; };
 		3AA9E7B22B68B52800CDCD1F /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9E7B12B68B52800CDCD1F /* DashboardController.swift */; };
 		3ABA1A492B516C8200F40CD4 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA1A482B516C8200F40CD4 /* AppDependencies.swift */; };
+		3ABB2F912B808BA400C20424 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB2F902B808BA400C20424 /* Constants.swift */; };
 		3AC2B9EA2B4FE92B00D41050 /* UpcomingMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2B9E92B4FE92B00D41050 /* UpcomingMoviesViewModel.swift */; };
 		3AC2B9EC2B4FEE5700D41050 /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2B9EB2B4FEE5700D41050 /* HomeState.swift */; };
 		3AC2B9F92B51190F00D41050 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2B9F82B51190F00D41050 /* HTTPClient.swift */; };
@@ -115,6 +116,7 @@
 		3AA90D462B6FF1CF00888856 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		3AA9E7B12B68B52800CDCD1F /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		3ABA1A482B516C8200F40CD4 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		3ABB2F902B808BA400C20424 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3AC2B9E92B4FE92B00D41050 /* UpcomingMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesViewModel.swift; sourceTree = "<group>"; };
 		3AC2B9EB2B4FEE5700D41050 /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		3AC2B9F82B51190F00D41050 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				3A7413E62B53D88900441784 /* Endpoint.swift */,
 				3A7413ED2B53F73E00441784 /* TokenProvider.swift */,
 				3A1339712B5660CF0018E12D /* HTTPMethod.swift */,
+				3ABB2F902B808BA400C20424 /* Constants.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				3AA90D2C2B6F98A700888856 /* SearchView.swift in Sources */,
 				3A1339722B5660CF0018E12D /* HTTPMethod.swift in Sources */,
 				3AA90D3D2B6FAF6800888856 /* AuthError.swift in Sources */,
+				3ABB2F912B808BA400C20424 /* Constants.swift in Sources */,
 				3AA69EFF2B4EA41C0055C90F /* AccountView.swift in Sources */,
 				3AC2B9F92B51190F00D41050 /* HTTPClient.swift in Sources */,
 				3A4628572B6AAB9400726B65 /* ParentCoordinator.swift in Sources */,

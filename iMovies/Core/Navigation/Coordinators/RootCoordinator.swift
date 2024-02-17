@@ -5,7 +5,6 @@
 //  Created by cefalo on 31/1/24.
 //
 
-import Foundation
 import UIKit
 
 final class RootCoordinator: NSObject, ParentCoordinator {
@@ -27,7 +26,7 @@ extension RootCoordinator {
     
     func navigateToDashboard() {
         let dashboardController = DashboardController(coordinator: self)
-        navigationController.pushViewController(dashboardController, animated: true)
+        navigationController.setViewControllers([dashboardController], animated: true)
     }
     
     func navigateToLogin() {

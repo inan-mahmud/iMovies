@@ -5,7 +5,6 @@
 //  Created by cefalo on 30/1/24.
 //
 
-import Foundation
 import UIKit
 
 class DashboardController: UITabBarController {
@@ -32,6 +31,7 @@ class DashboardController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         startCoordinators()
         

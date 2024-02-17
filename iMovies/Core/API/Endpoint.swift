@@ -48,12 +48,6 @@ extension Endpoint where Kind == EndpointTypes.Private, Response == MovieDTO {
     }
 }
 
-enum AccessToken: String {
-    case accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDI1OTYwNTU3ZTNhNzgyMjg5NDVkYjg5NzJiZTc3MiIsInN1YiI6IjY1ODVjZDc2ZmNhZGI0MjVlMTMzZmU3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FLHnmsaHp_V2VHmZbWBJEC6Om2pR1wRWCjmFa7KU8SQ"
-    
-    case apiKey = "1425960557e3a78228945db8972be772"
-}
-
 protocol EndpointType  {
     associatedtype RequestData
     
@@ -69,8 +63,8 @@ enum EndpointTypes {
     }
     
     enum Private: EndpointType {
-        static func prepare(_ request: inout URLRequest, with token: AccessToken) {
-            request.addValue("Bearer \(token.rawValue)", forHTTPHeaderField: "Authorization")
+        static func prepare(_ request: inout URLRequest, with token: String) {
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
         }

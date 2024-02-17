@@ -9,7 +9,5 @@ import Foundation
 
 class TokenProvider {
  
-    public func getAccessToken() -> String {
-        return AccessToken.accessToken.rawValue
-    }
+    
 }
